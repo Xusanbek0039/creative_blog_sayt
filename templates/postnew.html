@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+
+
+{% block body %}
+<style>
+  html,body{
+    width: 100%;
+    overflow-x: hidden;
+  }
+</style>
+<br><br><br><br>
+
+<div class="row">
+<div class="col-sm-12 col-md-10 offset-md-1">
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-8">Postlarni togri joylash</h1><hr>
+        <p class="lead">
+                <strong>Post joylashda uchraydigan xatoliklar</strong>
+
+
+        
+        <p class="lead"><strong>Postni to'liq yoritish uchun rasmlardan foydalaning</strong></p>
+        <div class="row" >
+            <div class="col-sm-10" >
+                <div style='border:2px solid black;' class='p-3'>
+                </b><strong> Post joylash togrisida video yo'riqnoma olish uchun Ko'rish tugmasini bosing!</strong></p>
+            </div>
+            </div>
+            <div class="col-sm-2">
+                <button onclick="window.location.href='https://t.me/IT_Creative_Channel'" class="btn-primary">Ko'rish</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+          }
+</script>
+
+<h3>- Post joylashni boshladik -</h3><hr>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    {% for hidden_field in form.hidden_fields %}
+    {{ hidden_field.errors }}
+    {{ hidden_field }}
+    {% endfor %}
+
+{% for field in form.visible_fields %}
+    <div class="form-group">
+      {{ field.label_tag }}
+
+      {% if form.is_bound %}
+        {% if field.errors %}
+          {% render_field field class="form-control is-invalid" %}
+          {% for error in field.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% render_field field class="form-control is-valid" %}
+        {% endif %}
+      {% else %}
+        {% render_field field class="form-control" %}
+      {% endif %}
+
+      {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+      {% endif %}
+    </div>
+  {% endfor %}
+<br>
+  <hr><br>
+    {{ formset.management_form }}
+    {% for form in formset %}
+    {% for field in form.visible_fields %}
+    <div class="form-group">
+      {{ field.label_tag }}
+      {% render_field field class="form-control" %}
+      {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+      {% endif %}
+    </div>
+     {% endfor %}
+    {% endfor %}
+
+
+    <button type="submit" class="btn btn-success">Postni joylash</button>
+    <a href="{% url 'homepage' %}" class="btn btn-danger">Orqaga</a>
+  </form>
+</div></div>
+
+
+  {% load static %}
+  <script src="{% static 'js/jquery-file-upload/vendor/jquery.ui.widget.js' %}"></script>
+  <script src="{% static 'js/jquery-file-upload/jquery.iframe-transport.js' %}"></script>
+  <script src="{% static 'js/jquery-file-upload/jquery.fileupload.js' %}"></script>
+{% endblock %}
+
+
+

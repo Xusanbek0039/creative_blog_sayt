@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block body %}
+
+
+
+<section class="mbr-section content5 cid-qOrpftxYjK mbr-parallax-background" id="content5-z">
+
+    <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(0, 0, 0);">
+    </div>
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1">
+                    {{ data1.title }}<br></h2>
+                <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-5">
+                    {{ data1.subtitle }}
+                </h3>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    
+    .cid-qOrpftxYjK{
+        background-image: url("{{ data1.topbanner.url }}");
+    }
+</style>
+<section class="mbr-section article content1 cid-qOrqewdLpP" id="content1-14" >
+
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="mbr-text col-12 col-md-8 mbr-fonts-style display-5">
+                
+                <h6><i>Jami so'zlar- {{ data1.text|wordcount }}</i></h6>
+
+                {% autoescape off %}
+                {{ data1.text }}
+                {% endautoescape %}
+
+                <img src="" class="img-fluid img-thumbnail" alt="">
+                {% load static%}
+
+                <p>{{ data1.document.url}}</p>
+                <p>{{ data1.document.name }}</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="testimonials3 cid-qOrqR1IiVK" id="testimonials3-17">
+
+        <div class="container">
+            <div class="media-container-row">
+                <div class="media-content px-3 align-self-center mbr-white py-2">
+                    <p class="mbr-text testimonial-text mbr-fonts-style display-7">
+                       Muallif haqida
+                    </p>
+                    <p class="mbr-author-name pt-4 mbr-fonts-style display-3">
+                       <a href="{% url 'profile' authorinfo.author %}" class="mbr-fonts-style text-black">{{userinfo_object.displayname }} </a>
+                    </p>
+                    <p class="mbr-author-desc mbr-fonts-style display-7">
+                       {{userinfo_object.designation}}
+                    </p>
+                </div>
+                <div class="mbr-figure pl-lg-5">
+                  <img src="/media/{{authorinfo.myimage}}" height="100%" width="100%">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+
+
+<!-- comments section code -->
+{% if user.is_authenticated %}
+
+<div class="row">
+<div class="col-sm-12 col-md-8 offset-md-2" >
+<br>
+<h4>Post kamentariyalari:</h4><hr>
+<form method="POST">
+{% csrf_token %}
+{% for field in form1.visible_fields %}
+
+    <div class="form-group">
+      {{ field.label_tag }}
+      {% render_field field class="form-control" %}
+    </div>
+{% endfor %}
+
+<button type="submit" class="btn btn-warning">Kamentariya yozish</button>
+
+</form>
+<br>
+<hr>
+<br>
+</div>
+</div>
+
+<div class="container">
+{% for comments in com %}
+
+<div class="comment mb-1 row">
+    <div class="comment-avatar col-md-2 col-sm-2 col-xs-2 text-center  d-none d-sm-block">
+        <a href=""><img class="mx-auto rounded-circle img-fluid" src="/media/{{ comments.usrimg.myimage }}" alt="avatar"></a>
+    </div>
+    <div class="comment-content col-md-10 col-sm-9 col-xs-9">
+        <h6 class="small comment-meta"><a href="#">{{comments.user}}</a> Today, 2:38</h6>       
+        <div class="comment-body">
+            <h5>
+                {{ comments.message }}</h5>{% if comments.user == request.user %}<a href="{% url 'commentdelete' comments.pk %}" class="small"><span class="badge badge-primary">O'chirish</span></a>{% endif %}
+            
+        </div>
+        <div class="replybutton" style="">
+            <span class="text-right small"> Javob bering</span>
+        </div>
+
+    <div class="row replybox" style="display: none">
+        <div class="col-sm-12 ml-5 pl-5">
+            <form method='POST'>
+                {% csrf_token %}
+                <input type="hidden" name='whichcomment' id='id_whichcomment' value="{{comments.id}}">
+                <input class="" type="text" name='message' maxlength="250" id="id_message" placeholder="Reply. . . ">
+                <button style="padding:1%;" class="btn" type="submit">Yuborish</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<br>
+
+
+
+{% for r in replycom %}
+{% if r.whichcomment.message == comments.message %}
+
+
+
+<div class="comment-reply col-md-11 offset-md-1 col-sm-10 offset-sm-2">
+        <div class="row">
+
+            <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1  d-none d-sm-block">
+                <a href=""><img class="mx-auto rounded-circle img-fluid" src="/media/{{ r.usrimg.myimage }}" alt="avatar"></a>
+            </div>
+            <div class="comment-content col-md-11 col-sm-10 col-12">
+                <h6 class="small comment-meta"><a href="#">{{r.user}}</a> Today, 12:31</h6>
+                <div class="comment-body">
+                    <h5>{{ r.message }}</h5>{% if r.user == request.user %}<a href="{% url 'commentreplydelete' r.pk %}" class="small"><span class="badge badge-primary">O'chirish</span></a>{% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endif %}
+{% endfor %}
+<br><hr>
+{% endfor %}
+</div>
+{% else %}
+
+
+<section class="mbr-section info2 cid-qOrr15WCRi" id="info2-19">
+        <div class="container">
+           <div class="row main justify-content-center">
+               <div class="media-container-column col-12 col-lg-3 col-md-4">
+                   <div class="mbr-section-btn align-left py-4">
+                       <a class="btn btn-primary display-4" href="{% url 'login' %}" target="_blank">
+                       <span class="mbri-cursor-click mbr-iconfont"></span>
+                       &nbsp;Tizimga kirish!
+                       </a>
+                   </div>
+               </div>
+               <div class="media-container-column title col-12 col-lg-7 col-md-6">
+                   <h2 class="align-right mbr-bold mbr-white pb-3 mbr-fonts-style display-5">Izohlarni ko'rish uchun tizimga kiring</h2>
+                   <h3 class="mbr-section-subtitle align-right mbr-light mbr-white mbr-fonts-style display-5">va o'qish, yoqtirish, fikr bildirish, ulanish, e'lon qilish va hokazo kabi boshqa funktsiyalardan bahramand bo'ling.</h3>
+               </div>
+           </div>
+       </div>
+   </section>
+   
+
+
+{% endif %}
+
+
+
+
+<br><hr>
+
+
+
+
+<section once="" class="cid-qOrru7r8z5" id="footer7-1a">
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="row row-links">
+                <ul class="foot-menu">
+                <li class="foot-menu-item mbr-fonts-style display-7">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</li><li class="foot-menu-item mbr-fonts-style display-7">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</li><li class="foot-menu-item mbr-fonts-style display-7">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</li><li class="foot-menu-item mbr-fonts-style display-7"></li><li class="foot-menu-item mbr-fonts-style display-7">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</li></ul>
+            </div>
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+
+                <div class="soc-item">
+                        <a href="https://twitter.com/mohitjain2302" target="_blank">
+                            <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.facebook.com/mohitjain2302" target="_blank">
+                            <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.youtube.com/technomonk" target="_blank">
+                            <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://instagram.com/frasm__" target="_blank">
+                            <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="#" target="_blank">
+                            <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="#" target="_blank">
+                            <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2023 IT Creative - All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<script>
+
+
+        $(document).ready(function(){
+            $('img').each(function(){
+              var src = $(this).attr('src');;
+              $(this).attr('src', src.replace('post_images_i','post_images_{{data1.id}}'));
+            });
+          });
+
+
+        $('.replybutton').click( function(){
+            $(this).next('.replybox').toggle();
+            console.log('triggered');
+
+        });
+      
+
+</script>
+</body>
+</html>
+
+{% endblock %}

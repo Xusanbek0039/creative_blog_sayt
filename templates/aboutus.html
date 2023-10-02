@@ -1,0 +1,343 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<section class="cid-qOrjrWV7nk mbr-fullscreen mbr-parallax-background" id="header2-o">
+    <div class="mbr-overlay" style="opacity: 0.1; background-color: rgb(0, 0, 0);"></div>
+
+    <div class="container align-center">
+        <div class="row justify-content-md-center">
+            <div class="mbr-white col-md-10">
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-2">IT Creative jamoasi shaxsiy blogiga xush kelibsiz</h1>
+                
+                <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" href="{% if user.is_authenticated  %}{% url 'newpost' %}{% else %}{% url 'signin' %}{% endif %}">Blog yuritish</a>
+                    <a class="btn btn-md btn-white-outline display-4" href="{% url 'homepage' %}">Blog kuzatish</a></div>
+                <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-7" href="{% url 'soat' %}">Joriy soat</a>
+
+            </div>
+        </div>
+    </div>
+    <!-- <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+        <!-- <a href="#next"> -->
+            <i class="mbri-down mbr-iconfont"></i> -->
+        </a>
+    </div>
+</section>
+
+<section class="cid-qOrknD3Gce" id="image2-p">
+    <figure class="mbr-figure" id="next">
+        <div class="image-block" style="width: 100%;" >
+            {% load static %}
+            <img src="{% static 'assets/images/video.gif' %}" alt="BACKGROUND IMAGE" title="">
+            <figcaption class="mbr-figure-caption mbr-figure-caption-over">
+                <div class="container pb-5 mbr-white align-center mbr-fonts-style display-2">Birgalikda biz yozuvchilar va kitobxonlar bir joyga to'planishlari va har qanday narsa haqida o'z fikrlari, g'oyalari va qarashlarini erkin va munosib tarzda baham ko'rishlari mumkin bo'lgan ajoyib joy yaratmoqdamiz.<br><br><br></div>
+            </figcaption>
+        </div>
+    </figure>
+</section>
+
+<section class="features8 cid-qOrlRh3Igc mbr-parallax-background" id="features8-q">
+
+    
+
+    <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(0, 0, 0);">
+    </div>
+
+    <div class="container">
+        <div class="media-container-row">
+
+            <div class="card  col-12 col-md-6 col-lg-4">
+                <div class="card-img">
+                    <span class="mbri-desktop mbr-iconfont"></span>
+                </div>
+                <div class="card-box align-center">
+                    <h4 class="card-title mbr-fonts-style display-7">
+                        Cheksiz saytlar
+                    </h4>
+                    <p class="mbr-text mbr-fonts-style display-7">
+Foydali saytlar haqida yoziladi
+                    </p>
+                    
+                </div>
+            </div>
+
+            <div class="card  col-12 col-md-6 col-lg-4">
+                <div class="card-img">
+                    <span class="mbri-touch mbr-iconfont"></span>
+                </div>
+                <div class="card-box align-center">
+                    <h4 class="card-title mbr-fonts-style display-7">
+                        Mobil telefon uchun 
+                    </h4>
+                    <p class="mbr-text mbr-fonts-style display-7">
+Mobil ilovalar uchun linklar beriladi####
+                    </p>
+                    
+                </div>
+            </div>
+
+            <div class="card  col-12 col-md-6 col-lg-4">
+                <div class="card-img">
+                    <span class="mbri-responsive mbr-iconfont"></span>
+                </div>
+                <div class="card-box align-center">
+                    <h4 class="card-title mbr-fonts-style display-7">
+                        Eng songi xabarlar
+                    </h4>
+                    <p class="mbr-text mbr-fonts-style display-7">
+Bu yerga shu haqida yoziladi #######                    </p>
+                    
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</section>
+
+<section class="features12 cid-qOrmAdYZAo" id="features12-r">    
+
+    <div class="container">
+        <h2 class="mbr-section-title pb-2 mbr-fonts-style display-2">
+            Tarkibni yaxshilash uchun Rasmdan foydalaning.
+        </h2>
+        <h3 class="mbr-section-subtitle pb-3 mbr-fonts-style display-5">
+        Saytdan qanday foydalanish haqida qisqacha
+        </h3>
+
+        <div class="media-container-row pt-5">
+            <div class="block-content align-right">
+                <div class="card pl-3 pr-3 pb-5">
+                    <div class="mbr-card-img-title">
+                        <div class="card-img pb-3">
+                             <span class="mbri-upload mbr-iconfont"></span>
+                        </div>
+                        <div class="mbr-crt-title">
+                            <h4 class="card-title py-2 mbr-crt-title mbr-fonts-style display-7">Claude hizmatidan foydalaning                    
+                            </h4>
+                        </div>
+                    </div>                
+
+                    <div class="card-box">
+                        <p class="mbr-text mbr-section-text mbr-fonts-style display-7">
+                            Veb-saytingizni Amazon S3, Google Cloud, Github sahifalarida mahalliy disk, FTP yoki xostga nashr eting. Bitta platforma yoki xizmat ko'rsatuvchi saytlarga tayanob qolmang!.
+                         </p>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card pl-3 pr-3 pb-5">
+                    <div class="mbr-card-img-title">
+                        <div class="card-img pb-3">
+                            <span class="mbri-drag-n-drop2 mbr-iconfont"></span>
+                        </div>
+                        <div class="mbr-crt-title">
+                            <h4 class="card-title py-2 mbr-crt-title mbr-fonts-style display-7">
+                                Foydalanish oson
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <p class="mbr-text mbr-section-text mbr-fonts-style display-7">
+                            Saytdan qanday foydalanish haqida qisqa qilib aytiladi
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mbr-figure" style="width: 50%;">
+                
+                <img src="{% static 'assets/images/logoit.jpg' %}" alt="Mobirise">
+            </div>
+
+            <div class="block-content align-left  ">
+                <div class="card pl-3 pr-3 pb-5">
+                    <div class="mbr-card-img-title">
+                        <div class="card-img pb-3">
+                             <span class="mbri-features mbr-iconfont"></span>
+                        </div>
+                        <div class="mbr-crt-title">
+                            <h4 class="card-title py-2 mbr-crt-title mbr-fonts-style display-7">
+                                400 dan ortiq ajoyib maqolalar</h4>
+                        </div>
+                    </div>                
+
+                    <div class="card-box">
+                        <p class="mbr-text mbr-section-text mbr-fonts-style display-7">
+                            Bu yerga takliflar haqida yoziladi
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card pl-3 pr-3 pb-5">
+                    <div class="mbr-card-img-title">
+                        <div class="card-img pb-3">
+                            <span class="mbri-sites mbr-iconfont"></span>
+                        </div>
+                        <div class="mbr-crt-title">
+                            <h4 class="card-title py-2 mbr-crt-title mbr-fonts-style display-7">
+                                Acaunt xavsizligi haqida qisqacha
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="card-box">
+                        <p class="mbr-text mbr-section-text mbr-fonts-style display-7">
+                            Bu yerga acaunt xavsizligi haqida qisqacha yoziladi
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="counters1 counters cid-qOrmOJ9ak7" id="counters1-s">
+
+    
+
+    
+
+    <div class="container">
+        
+        <h3 class="mbr-section-subtitle mbr-fonts-style display-5">- Statistika -</h3>
+
+        <div class="container pt-4 mt-2">
+            <div class="media-container-row">
+                <div class="card p-3 align-center col-12 col-md-6 col-lg-4">
+                    <div class="panel-item p-3">
+                        <div class="card-img pb-3">
+                            <span class="mbri-mobirise mbr-iconfont"></span>
+                        </div>
+
+                        <div class="card-text">
+                            <h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
+                                  209
+                            </h3>
+                            <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Kanal obunachilari</h4>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card p-3 align-center col-12 col-md-6 col-lg-4">
+                    <div class="panel-item p-3">
+                        <div class="card-img pb-3">
+                            <span class="mbri-touch-swipe mbr-iconfont"></span>
+                        </div>
+                        <div class="card-text">
+                            <h3 class="count pt-3 pb-3 mbr-fonts-style display-2">
+                                  155
+                            </h3>
+                            <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Jami maqolalar</h4>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-3 align-center col-12 col-md-6 col-lg-4">
+                    <div class="panel-item p-3">
+                        <div class="card-img pb-3">
+                            <span class="mbri-responsive mbr-iconfont"></span>
+                        </div>
+                        <div class="card-text">
+                            <h3 class="count pt-3 pb-3 mbr-fonts-style display-2">1500
+                            </h3>
+                            <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Bizni kuzatuvchilar</h4>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+                
+            </div>
+        </div>
+   </div>
+</section>
+
+<section class="mbr-section form3 cid-qOrnqsCs6u" id="form3-t">
+
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-12 col-lg-8">
+                <h2 class="align-center pb-2 mbr-fonts-style display-2">
+                    Obunani tekshirish
+                </h2>
+                <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
+                    Bizga bo'lgan obunani tekshirish
+                </h3>
+            </div>
+        </div>
+
+        <div class="row py-2 justify-content-center">
+            <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
+                <div data-form-alert="" hidden="">
+                        Shaklni to'ldirganingiz uchun tashakkur!
+                </div>
+                <form class="mbr-form" action="https://t.me/IT_Creative_Channel" method="post" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="MKkwM/tH7GBPBVgm3NJ2Y9EtDffYblN2oG5DuIxgXHUwy/n3LrQ9Ir8sYEFjQ5oO5jrlo2axTAki5XkW4/AEbILH5DpAPpUnvx7JmhADzCxcAfer/sxx0vb4NTR+dP5A" data-form-field="Email">
+                    <div class="mbr-subscribe input-group">
+                        <input class="form-control" type="email" name="email" placeholder="Email" data-form-field="Email" required="" id="email-form3-t">
+                        <span class="input-group-btn">
+                            <button href="" type="submit" class="btn btn-primary  display-4">Izlash</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer3 cid-qOrnwSQ8ny mbr-reveal" id="footer3-u">
+
+    
+
+    
+
+
+            <div class="media-container-row">
+                <div class="col-sm-6 copyright">
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        © Copyright 2023 IT Creative - All Rights Reserved
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-list align-right">
+                        <div class="soc-item">
+                            <a href="https://twitter.com/mobirise" target="_blank">
+                                <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a href="https://www.facebook.com/mohitjain2302" target="_blank">
+                                <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a href="https://www.youtube.com/c/technomonk" target="_blank">
+                                <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a href="https://instagram.com/frasm__" target="_blank">
+                                <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  
+</body>
+</html>
+{% endblock %}
